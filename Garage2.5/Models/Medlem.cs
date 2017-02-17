@@ -7,7 +7,8 @@ namespace Garage2._5.Models
 {
     public class Medlem
     {
-        public int MedlemsId { get; set; }
+        
+        public int Id { get; set; }
         public string FörNamn { get; set; }
         public string EfterNamn { get; set; }
 

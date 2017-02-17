@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Garage2._5.Models.Fordon>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Medlemar.FörNamn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Regnr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Märke)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modell)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AntalHjul)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parkeringtid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FordonstypId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Medlemar.FörNamn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Regnr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Märke)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modell)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AntalHjul)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parkeringtid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FordonstypId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FordonsId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FordonsId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FordonsId })
+        </td>
+    </tr>
+}
+
+</table>

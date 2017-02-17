@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -120,10 +128,19 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FordonsController.cs" />
+    <Compile Include="Controllers\FordonstypsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MedlemsController.cs" />
+    <Compile Include="DAL\Garage2_5Context.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702171217046_Init.cs" />
+    <Compile Include="Migrations\201702171217046_Init.Designer.cs">
+      <DependentUpon>201702171217046_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Fordon.cs" />
     <Compile Include="Models\Fordonstyp.cs" />
     <Compile Include="Models\Medlem.cs" />
@@ -164,6 +181,21 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Medlems\Create.cshtml" />
+    <Content Include="Views\Medlems\Delete.cshtml" />
+    <Content Include="Views\Medlems\Details.cshtml" />
+    <Content Include="Views\Medlems\Edit.cshtml" />
+    <Content Include="Views\Medlems\Index.cshtml" />
+    <Content Include="Views\Fordons\Create.cshtml" />
+    <Content Include="Views\Fordons\Delete.cshtml" />
+    <Content Include="Views\Fordons\Details.cshtml" />
+    <Content Include="Views\Fordons\Edit.cshtml" />
+    <Content Include="Views\Fordons\Index.cshtml" />
+    <Content Include="Views\Fordonstyps\Create.cshtml" />
+    <Content Include="Views\Fordonstyps\Delete.cshtml" />
+    <Content Include="Views\Fordonstyps\Details.cshtml" />
+    <Content Include="Views\Fordonstyps\Edit.cshtml" />
+    <Content Include="Views\Fordonstyps\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -175,6 +207,11 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201702171217046_Init.resx">
+      <DependentUpon>201702171217046_Init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
