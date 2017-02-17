@@ -13,12 +13,12 @@ namespace Garage2._5.Controllers
 {
     public class MedlemsController : Controller
     {
-        private Garage2_5Context db = new Garage2_5Context();
+        private FordonContext db = new FordonContext();
 
         // GET: Medlems
         public ActionResult Index()
         {
-            return View(db.Medlems.ToList());
+            return View(db.Medlemmar.ToList());
         }
 
         // GET: Medlems/Details/5
@@ -28,7 +28,7 @@ namespace Garage2._5.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Medlem medlem = db.Medlems.Find(id);
+            Medlem medlem = db.Medlemmar.Find(id);
             if (medlem == null)
             {
                 return HttpNotFound();
@@ -51,7 +51,7 @@ namespace Garage2._5.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Medlems.Add(medlem);
+                db.Medlemmar.Add(medlem);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace Garage2._5.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Medlem medlem = db.Medlems.Find(id);
+            Medlem medlem = db.Medlemmar.Find(id);
             if (medlem == null)
             {
                 return HttpNotFound();
@@ -97,7 +97,7 @@ namespace Garage2._5.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Medlem medlem = db.Medlems.Find(id);
+            Medlem medlem = db.Medlemmar.Find(id);
             if (medlem == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace Garage2._5.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Medlem medlem = db.Medlems.Find(id);
-            db.Medlems.Remove(medlem);
+            Medlem medlem = db.Medlemmar.Find(id);
+            db.Medlemmar.Remove(medlem);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

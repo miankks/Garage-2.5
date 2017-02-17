@@ -13,13 +13,13 @@ namespace Garage2._5.Controllers
 {
     public class FordonsController : Controller
     {
-        private Garage2_5Context db = new Garage2_5Context();
+        private FordonContext db = new FordonContext();
 
         // GET: Fordons
         public ActionResult Index()
         {
-            var fordons = db.Fordons.Include(f => f.Medlemar);
-            return View(fordons.ToList());
+            var fordon = db.Fordon.Include(f => f.Medlemar);
+            return View(fordon.ToList());
         }
 
         // GET: Fordons/Details/5
@@ -29,7 +29,7 @@ namespace Garage2._5.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Fordon fordon = db.Fordons.Find(id);
+            Fordon fordon = db.Fordon.Find(id);
             if (fordon == null)
             {
                 return HttpNotFound();
@@ -40,7 +40,7 @@ namespace Garage2._5.Controllers
         // GET: Fordons/Create
         public ActionResult Create()
         {
-            ViewBag.MedlemId = new SelectList(db.Medlems, "Id", "FörNamn");
+            ViewBag.MedlemId = new SelectList(db.Medlemmar, "Id", "FörNamn");
             return View();
         }
 
@@ -49,16 +49,16 @@ namespace Garage2._5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FordonsId,Regnr,Märke,Modell,AntalHjul,Parkeringtid,MedlemId,FordonstypId")] Fordon fordon)
+        public ActionResult Create([Bind(Include = "FordonsId,Regnr,Märke,Parkeringtid,MedlemId,FordonstypId")] Fordon fordon)
         {
             if (ModelState.IsValid)
             {
-                db.Fordons.Add(fordon);
+                db.Fordon.Add(fordon);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MedlemId = new SelectList(db.Medlems, "Id", "FörNamn", fordon.MedlemId);
+            ViewBag.MedlemId = new SelectList(db.Medlemmar, "Id", "FörNamn", fordon.MedlemId);
             return View(fordon);
         }
 
@@ -69,12 +69,12 @@ namespace Garage2._5.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Fordon fordon = db.Fordons.Find(id);
+            Fordon fordon = db.Fordon.Find(id);
             if (fordon == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MedlemId = new SelectList(db.Medlems, "Id", "FörNamn", fordon.MedlemId);
+            ViewBag.MedlemId = new SelectList(db.Medlemmar, "Id", "FörNamn", fordon.MedlemId);
             return View(fordon);
         }
 
@@ -83,7 +83,7 @@ namespace Garage2._5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FordonsId,Regnr,Märke,Modell,AntalHjul,Parkeringtid,MedlemId,FordonstypId")] Fordon fordon)
+        public ActionResult Edit([Bind(Include = "FordonsId,Regnr,Märke,Parkeringtid,MedlemId,FordonstypId")] Fordon fordon)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace Garage2._5.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MedlemId = new SelectList(db.Medlems, "Id", "FörNamn", fordon.MedlemId);
+            ViewBag.MedlemId = new SelectList(db.Medlemmar, "Id", "FörNamn", fordon.MedlemId);
             return View(fordon);
         }
 
@@ -102,7 +102,7 @@ namespace Garage2._5.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Fordon fordon = db.Fordons.Find(id);
+            Fordon fordon = db.Fordon.Find(id);
             if (fordon == null)
             {
                 return HttpNotFound();
@@ -115,8 +115,8 @@ namespace Garage2._5.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Fordon fordon = db.Fordons.Find(id);
-            db.Fordons.Remove(fordon);
+            Fordon fordon = db.Fordon.Find(id);
+            db.Fordon.Remove(fordon);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

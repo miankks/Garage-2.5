@@ -13,12 +13,12 @@ namespace Garage2._5.Controllers
 {
     public class FordonstypsController : Controller
     {
-        private Garage2_5Context db = new Garage2_5Context();
+        private FordonContext db = new FordonContext();
 
         // GET: Fordonstyps
         public ActionResult Index()
         {
-            return View(db.Fordonstyps.ToList());
+            return View(db.Fordonstyp.ToList());
         }
 
         // GET: Fordonstyps/Details/5
@@ -28,7 +28,7 @@ namespace Garage2._5.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Fordonstyp fordonstyp = db.Fordonstyps.Find(id);
+            Fordonstyp fordonstyp = db.Fordonstyp.Find(id);
             if (fordonstyp == null)
             {
                 return HttpNotFound();
@@ -51,7 +51,7 @@ namespace Garage2._5.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Fordonstyps.Add(fordonstyp);
+                db.Fordonstyp.Add(fordonstyp);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace Garage2._5.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Fordonstyp fordonstyp = db.Fordonstyps.Find(id);
+            Fordonstyp fordonstyp = db.Fordonstyp.Find(id);
             if (fordonstyp == null)
             {
                 return HttpNotFound();
@@ -97,7 +97,7 @@ namespace Garage2._5.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Fordonstyp fordonstyp = db.Fordonstyps.Find(id);
+            Fordonstyp fordonstyp = db.Fordonstyp.Find(id);
             if (fordonstyp == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace Garage2._5.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Fordonstyp fordonstyp = db.Fordonstyps.Find(id);
-            db.Fordonstyps.Remove(fordonstyp);
+            Fordonstyp fordonstyp = db.Fordonstyp.Find(id);
+            db.Fordonstyp.Remove(fordonstyp);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
