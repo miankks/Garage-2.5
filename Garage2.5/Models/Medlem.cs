@@ -7,11 +7,11 @@ namespace Garage2._5.Models
 {
     public class Medlem
     {
-        public int Id { get; set; }
+        public int MedlemsId { get; set; }
         public string FörNamn { get; set; }
         public string EfterNamn { get; set; }
 
         //Navigation property
-        public virtual ICollection<Fordon> Fordons { get; set; }
+        public virtual ICollection<Fordon> Fordon { get; set; }
     }
 }

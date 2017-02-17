@@ -14,7 +14,7 @@ namespace Garage2._5.Models
 
 
         //Navigation property
-        public virtual ICollection<Fordon> 
+        public virtual ICollection<Fordon> Fordon { get; set; }
 
     }
 }
